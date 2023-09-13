@@ -31,7 +31,7 @@ def bucket_form():
     return render_template('bucketForm.html')
 
 #Create Bucket
-@app.route('/createBucket',methods=['GET','POST'])
+@app.route('/createBucket',methods=['POST'])
 def create_bucket():
     bucketName = request.form.get('bucketName')
     try:
@@ -45,7 +45,7 @@ def create_bucket():
     return render_template('bucketForm.html')
 
 #Delete Bucket
-@app.route('/delBucket',methods=['GET','POST'])
+@app.route('/delBucket',methods=['POST'])
 def delete_bucket():
     bucketName = request.form.get('bucketName')
     try:
@@ -63,7 +63,7 @@ def folder_form():
     return render_template('folderForm.html')
 
 #Creating folder
-@app.route('/create',methods=['GET','POST'])
+@app.route('/create',methods=['POST'])
 def create_folder():
     bucketName = request.form.get('bucketName')
     folderName = request.form.get('folderName')+'/'
@@ -78,7 +78,7 @@ def create_folder():
     return render_template('folderForm.html')
 
 #Delete Folder
-@app.route('/delete',methods=['GET','POST'])
+@app.route('/delete',methods=['POST'])
 def delete_folder():
     bucketName = request.form.get('bucketName')
     folderName = request.form.get('folderName') + '/'
@@ -103,7 +103,7 @@ def delete_folder():
 def form():
     return render_template('uploadForm.html')
 
-@app.route('/upload', methods=["GET","POST"])
+@app.route('/upload', methods=["POST"])
 def upload():
     bucketName = request.form.get('bucket')
     file = request.files['file']
@@ -120,7 +120,7 @@ def upload():
 def del_file_form():
     return render_template('delFileForm.html')
 
-@app.route('/delFile',methods=['GET','POST'])
+@app.route('/delFile',methods=['POST'])
 def delFile():
     bucketName = request.form.get('bucketName') 
     fileName = request.form.get('fileName')
@@ -137,7 +137,7 @@ def move():
     return render_template('moveForm.html')
 
 #Copy file within s3
-@app.route('/copy',methods=['GET','POST'])
+@app.route('/copy',methods=['POST'])
 def copy_s3_objects():
     sourceBucket = request.form.get('sourceBucket')
     sourceFile = request.form.get('sourceFile')
@@ -154,7 +154,7 @@ def copy_s3_objects():
     return render_template('moveForm.html')
 
 #Move file within s3
-@app.route('/move',methods=['GET','POST'])
+@app.route('/move',methods=['POST'])
 def move_files():
     sourceBucket = request.form.get('sourceBucket')
     sourceFile = request.form.get('sourceFile')
